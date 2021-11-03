@@ -1,0 +1,7 @@
+{
+  "name": "socializr-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
