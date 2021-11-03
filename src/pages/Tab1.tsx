@@ -1,22 +1,45 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonList,
+  IonItem,
+  IonLabel,
+} from '@ionic/react';
+
 import './Tab1.css';
 
+interface Item {
+  description: string;
+}
+
 const Tab1: React.FC = () => {
+  const [itemsContent, setItemsContent] = useState([]);
+
+  const items = itemsContent.map((item: Item) => (
+    <IonItem>
+      <IonLabel>{item.description}</IonLabel>
+    </IonItem>
+  ));
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
+          <IonTitle>Tab 1: Events</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
+            <IonTitle size="large">Tab 1: Events</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+        <IonList>{items}</IonList>
       </IonContent>
     </IonPage>
   );
