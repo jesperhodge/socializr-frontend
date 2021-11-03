@@ -21,6 +21,17 @@ interface Item {
 const Tab1: React.FC = () => {
   const [itemsContent, setItemsContent] = useState([]);
 
+  useEffect(() => {
+    async function fetchItems() {
+      const items = await axios.request({
+        url: 'http://localhost:3000/events',
+        method: 'GET',
+      });
+      setItemsContent(items.data);
+    }
+    fetchItems();
+  }, []);
+
   const items = itemsContent.map((item: Item) => (
     <IonItem>
       <IonLabel>{item.description}</IonLabel>
